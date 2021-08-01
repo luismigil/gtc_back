@@ -1,19 +1,24 @@
 package oh.gtc.back.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 public class CardSet {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
     private String name;
+
     private String code;
+
     private Date releaseDate;
+
+    @OneToMany(mappedBy = "cardSet")
+    private List<Card> cards;
 
     protected CardSet(){
 

@@ -6,31 +6,31 @@ import javax.persistence.*;
 public class Card {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private int id;
+    private Integer id;
     private String name;
     private Integer cardType;
     private Integer cmc;
     private String color;
     private Integer rarity;
     private String artist;
-    private Integer cardSet;
+    @ManyToOne
+    @JoinColumn(name = "card_set", referencedColumnName = "id")
+    private CardSet cardSet;
     private Integer power;
     private Integer toughness;
-    private String imgUri;
+    private String cardImageUri;
+    private String picImageUri;
+
 
     protected Card(){
 
     }
 
-    public Card(final String name){
-        this.name = name;
-    }
-
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -82,11 +82,11 @@ public class Card {
         this.artist = artist;
     }
 
-    public Integer getCardSet() {
+    public CardSet getCardSet() {
         return cardSet;
     }
 
-    public void setCardSet(Integer cardSet) {
+    public void setCardSet(CardSet cardSet) {
         this.cardSet = cardSet;
     }
 
@@ -106,11 +106,19 @@ public class Card {
         this.toughness = toughness;
     }
 
-    public String getImgUri() {
-        return imgUri;
+    public String getCardImageUri() {
+        return cardImageUri;
     }
 
-    public void setImgUri(String imgUri) {
-        this.imgUri = imgUri;
+    public void setCardImageUri(String cardImageUri) {
+        this.cardImageUri = cardImageUri;
+    }
+
+    public String getPicImageUri() {
+        return picImageUri;
+    }
+
+    public void setPicImageUri(String picImageUri) {
+        this.picImageUri = picImageUri;
     }
 }
