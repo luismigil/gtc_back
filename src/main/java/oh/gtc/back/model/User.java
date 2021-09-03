@@ -1,24 +1,18 @@
 package oh.gtc.back.model;
 
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.Id;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import java.sql.Date;
 
-@Entity
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String name;
     private String surname;
     private String password;
     private Date lastLogin;
-    @CreatedDate
     private Date registeredAt;
 
     protected User(){
